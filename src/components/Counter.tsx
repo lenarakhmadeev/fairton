@@ -16,7 +16,9 @@ export function Counter() {
 
   return (
     <div className="Container">
-      <TonConnectButton />
+      {/*<TonConnectButton />*/}
+      {/**/}
+      {/*asdasdasda*/}
 
       <Card>
         <FlexBoxCol>
