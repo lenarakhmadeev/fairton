@@ -8,7 +8,6 @@ import {
   beginCell,
   SendMode
 } from "ton-core";
-import {Opcodes} from "../../chain/wrappers/Coinflip";
 
 export default class Counter implements Contract {
   static createForDeploy(code: Cell, initialCounterValue: number): Counter {
@@ -36,7 +35,7 @@ export default class Counter implements Contract {
       value: "0.005",
       sendMode: SendMode.PAY_GAS_SEPARATLY,
       body: beginCell()
-          .storeUint(Opcodes.increase, 32)
+          .storeUint(0x7e8764ef, 32)
           .storeUint(0, 64)
           .storeUint(2, 32)
           .endCell(),
