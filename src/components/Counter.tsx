@@ -1,37 +1,22 @@
-import { TonConnectButton } from "@tonconnect/ui-react";
 import { useCounterContract } from "../hooks/useCounterContract";
 import { useTonConnect } from "../hooks/useTonConnect";
 
-import {
-  Card,
-  FlexBoxCol,
-  FlexBoxRow,
-  Ellipsis,
-  Button,
-} from "./styled/styled";
-
-export function Counter() {
+export default function Counter() {
   const { connected } = useTonConnect();
   const { value, address, sendIncrement } = useCounterContract();
 
   return (
     <div className="Container">
-      {/*<TonConnectButton />*/}
-      {/**/}
-      {/*asdasdasda*/}
-
-      <Card>
-        <FlexBoxCol>
           <h3>Counter</h3>
-          <FlexBoxRow>
+          <div>
             <b>Address</b>
-            <Ellipsis>{address}</Ellipsis>
-          </FlexBoxRow>
-          <FlexBoxRow>
+            <span>{address}</span>
+          </div>
+          <div>
             <b>Value</b>
             <div>{value ?? "Loading..."}</div>
-          </FlexBoxRow>
-          <Button
+          </div>
+          <button
             disabled={!connected}
             className={`Button ${connected ? "Active" : "Disabled"}`}
             onClick={() => {
@@ -39,9 +24,7 @@ export function Counter() {
             }}
           >
             Increment
-          </Button>
-        </FlexBoxCol>
-      </Card>
+          </button>
     </div>
   );
 }
