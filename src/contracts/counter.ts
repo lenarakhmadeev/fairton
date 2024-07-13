@@ -6,7 +6,9 @@ import {
   Cell,
   contractAddress,
   beginCell,
+  SendMode
 } from "ton-core";
+import {Opcodes} from "../../chain/wrappers/Coinflip";
 
 export default class Counter implements Contract {
   static createForDeploy(code: Cell, initialCounterValue: number): Counter {
@@ -24,19 +26,34 @@ export default class Counter implements Contract {
   }
 
   async getCounter(provider: ContractProvider) {
-    const { stack } = await provider.get("counter", []);
+    console.log("GET")
+    const { stack } = await provider.get("get_last_price", []);
     return stack.readBigNumber();
   }
 
   async sendIncrement(provider: ContractProvider, via: Sender) {
-    const messageBody = beginCell()
-      .storeUint(1, 32) // op (op #1 = increment)
-      .storeUint(0, 64) // query id
-      .endCell();
     await provider.internal(via, {
-      value: "0.002", // send 0.002 TON for gas
-      body: messageBody,
+      value: "0.005",
+      sendMode: SendMode.PAY_GAS_SEPARATLY,
+      body: beginCell()
+          .storeUint(Opcodes.increase, 32)
+          .storeUint(0, 64)
+          .storeUint(2, 32)
+          .endCell(),
     });
+    //
+    //
+    //
+    //
+    // const messageBody = beginCell()
+    //   .storeUint(1, 32) // op (op #1 = increment)
+    //   .storeUint(0, 64) // query id
+    //   .storeUint(7, 32)
+    //   .endCell();
+    // await provider.internal(via, {
+    //   value: "0.002", // send 0.002 TON for gas
+    //   body: messageBody,
+    // });
   }
 
   constructor(
