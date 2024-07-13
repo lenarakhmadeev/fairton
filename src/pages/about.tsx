@@ -17,12 +17,9 @@ export default function DocsPage() {
 
               <Counter />
 
-
-
               <Button color="primary">
                   Button
               </Button>
-
 
               <div className="flex flex-row items-center justify-center gap-4">
 
@@ -76,7 +73,6 @@ export default function DocsPage() {
               </div>
 
               <Chart />
-
           </div>
       </section>
     </DefaultLayout>
