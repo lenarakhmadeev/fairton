@@ -5,8 +5,8 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 
 import { Divider, Link } from "@nextui-org/react";
-import Chart from "@/components/chart";
-import Counter from "@/components/counter";
+// import Chart from "@/components/chart";
+// import Counter from "@/components/counter";
 
 export default function DocsPage() {
   return (
@@ -15,7 +15,7 @@ export default function DocsPage() {
           <div className="inline-block max-w-lg text-center justify-center">
               <h1 className={title()}>About</h1>
 
-              <Counter />
+              {/*<Counter />*/}
 
               <Button color="primary">
                   Button
@@ -72,7 +72,7 @@ export default function DocsPage() {
 
               </div>
 
-              <Chart />
+              {/*<Chart />*/}
           </div>
       </section>
     </DefaultLayout>
